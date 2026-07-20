@@ -7,7 +7,7 @@ combining robotic manipulation with dual-rotation turntable reconstruction.
 
 Adaptive 3D Scanning Framework Combining Robotic Object Manipulation and Precision
 Turntable Reconstruction
-Amanuel Tereda, Dr. Sun Yi
+Amanuel Abrdo Tereda, Dr. Sun Yi
 North Carolina A&T State University, Department of Mechanical Engineering
 MECC 2026
 
