@@ -157,7 +157,7 @@ roslaunch flexbe_app flexbe_full.launch
 
 ## Contact
 
-Amanuel Abrdo Tereda
+Amanuel Abrdo Tereda;
 aatereda@aggies.ncat.edu
 Portfolio: [amumu-portfolio.vercel.app](https://amumu-portfolio.vercel.app)
 North Carolina A&T State University
