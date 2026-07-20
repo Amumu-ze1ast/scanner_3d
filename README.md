@@ -134,7 +134,8 @@ Hybrid with manipulation  95%       25s
 ## Contact
 
 Aman Negash
-anegash@aggies.ncat.edu
+aatereda@aggies.ncat.edu
+amumu-portfolio.vercel.app
 North Carolina A&T State University
 
 ## License
