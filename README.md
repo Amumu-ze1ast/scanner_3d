@@ -133,9 +133,9 @@ Hybrid with manipulation  95%       25s
 
 ## Contact
 
-Aman Negash
+Amanuel Abrdo Tereda
 aatereda@aggies.ncat.edu
-amumu-portfolio.vercel.app
+Portfolio: https://amumu-portfolio.vercel.app
 North Carolina A&T State University
 
 ## License
