@@ -1,0 +1,44 @@
+<launch>
+    <arg name="start_gazebo" default="true"/>
+    <arg name="robot_name" default="robot2"/>
+    <arg name="x0" default="0.8"/>
+    <arg name="y0" default="0.0"/>
+    <arg name="z0" default="0.0"/>
+    
+    <!-- CRITICAL: Wrap everything in namespace group -->
+    <group ns="$(arg robot_name)">
+        
+        <param name="robot_description" 
+               command="$(find xacro)/xacro $(find scanner_3d_new)/urdf/scanner_3d_new.urdf"/>
+        
+        <node name="spawn_model" 
+              pkg="gazebo_ros" 
+              type="spawn_model" 
+              args="-param robot_description -urdf -model $(arg robot_name)
+                    -x $(arg x0) -y $(arg y0) -z $(arg z0)" 
+              output="screen"/>
+        
+        <rosparam file="$(find scanner_3d_new)/config/position_controller_short.yaml" 
+                  command="load"/>
+        
+        <node name="controller_spawner" 
+              pkg="controller_manager" 
+              type="spawner" 
+              args="joint_state_controller 
+                    joint_1_controller joint_2_controller joint_3_controller 
+                    joint_5_controller joint_6_controller"
+              output="screen"/>
+        
+        <node name="robot_state_publisher" 
+              pkg="robot_state_publisher" 
+              type="robot_state_publisher"/>
+              
+    </group>
+    
+    <!-- Don't launch Gazebo if start_gazebo is false -->
+    <include file="$(find gazebo_ros)/launch/empty_world.launch" 
+             if="$(arg start_gazebo)">
+        <arg name="gui" value="true"/>
+    </include>
+    
+</launch>

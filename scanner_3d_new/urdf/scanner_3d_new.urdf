@@ -1,0 +1,534 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="scanner_3d_new">
+
+  <!-- kinetic camera integration -->
+  <xacro:include filename="$(find scanner_3d_new)/sensors/kinetic_rgb.urdf.xacro"/>
+  <xacro:property name="deg_to_rad" value="0.01745329251994329577"/>
+
+  <!-- <link name="dummy"> 
+  </link>
+
+  <joint name="dummy_joint" type="fixed">
+     <parent link="dummy"/>
+     <child link="base_link"/>
+  </joint> -->
+
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="0.000351017288880456 0.00572423839036256 0.0416910263296035"
+        rpy="0 0 0" />
+      <mass
+        value="10.844174517241107" />
+      <inertia
+        ixx="0.00325337169411082"
+        ixy="-1.21224316413528E-08"
+        ixz="-3.30765715721421E-06"
+        iyy="0.00117606779691291"
+        iyz="-4.14749687743179E-08"
+        izz="0.00418042024693748" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://scanner_3d_new/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://scanner_3d_new/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="link_1">
+    <inertial>
+      <origin
+        xyz="8.41877998940069E-07 -8.25516782571034E-08 -0.000475671895243742"
+        rpy="0 0 0" />
+      <mass
+        value="0.114546024913816" />
+      <inertia
+        ixx="9.99334835546062E-05"
+        ixy="1.86863963781219E-11"
+        ixz="5.22431515258599E-10"
+        iyy="9.99336722897715E-05"
+        iyz="-5.12278480646386E-11"
+        izz="0.00019798014189674" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://scanner_3d_new/meshes/link_1.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://scanner_3d_new/meshes/link_1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint_1"
+    type="continuous">
+    <origin
+      xyz="0 -0.06 0.125"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="link_1" />
+    <axis
+      xyz="0 0 -1" />
+    <limit
+      effort="10"
+      velocity="0.5" />
+  </joint>
+  <link
+    name="link_2">
+    <inertial>
+      <origin
+        xyz="-2.9847993276016E-17 0.0382935237067528 0.0120133163875085"
+        rpy="0 0 0" />
+      <mass
+        value="0.130209170515672" />
+      <inertia
+        ixx="0.000560456925255092"
+        ixy="1.18976150881875E-19"
+        ixz="1.17126468770009E-19"
+        iyy="0.000117060320800158"
+        iyz="-1.92276710310855E-05"
+        izz="0.000666080571697117" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://scanner_3d_new/meshes/link_2.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.776470588235294 0.756862745098039 0.737254901960784 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://scanner_3d_new/meshes/link_2.STL" />
+      </geometry>
+    </collision>
+    
+  </link>
+  <joint
+    name="joint_2"
+    type="continuous">
+    <origin
+      xyz="0 0.06 0.125"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="link_2" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      effort="10"
+      velocity="0.5" />
+  </joint>
+  <link
+    name="link_4">
+    <inertial>
+      <origin
+        xyz="-7.46008485234652E-10 -0.013095935229173 -0.0122967797675922"
+        rpy="0 0 0" />
+      <mass
+        value="0.0497537499681058" />
+      <inertia
+        ixx="0.000111767090838865"
+        ixy="-2.48853745639661E-14"
+        ixz="2.4690872648927E-12"
+        iyy="0.00011332789845957"
+        iyz="1.61900640044947E-08"
+        izz="6.80511724838459E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://scanner_3d_new/meshes/link_4.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://scanner_3d_new/meshes/link_4.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint_4"
+    type="fixed">
+    <origin
+      xyz="0 0.24185 0.0275"
+      rpy="0 0 0" />
+    <parent
+      link="link_2" />
+    <child
+      link="link_4" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="0"
+      upper="5"
+      effort="10"
+      velocity="5" />
+  </joint>
+  <link
+    name="link_5">
+    <inertial>
+      <origin
+        xyz="-4.60464421860768E-19 5.55111512312578E-17 0.00683519548638936"
+        rpy="0 0 0" />
+      <mass
+        value="0.01116345864679475" />
+      <inertia
+        ixx="6.15728234494915E-08"
+        ixy="1.47487062806279E-41"
+        ixz="4.07390153700848E-24"
+        iyy="6.15728234494915E-08"
+        iyz="-2.95267669130568E-29"
+        izz="2.60458742041686E-08" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://scanner_3d_new/meshes/link_5.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://scanner_3d_new/meshes/link_5.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint_5"
+    type="continuous">
+    <origin
+      xyz="0 -0.0131 0.06875"
+      rpy="0 0 0" />
+    <parent
+      link="link_4" />
+    <child
+      link="link_5" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      effort="10"
+      velocity="5" />
+  </joint>
+  <link
+    name="link_6">
+    <inertial>
+      <origin
+        xyz="0.000246284814100316 0.000298486660129743 -6.0569407832195E-05"
+        rpy="0 0 0" />
+      <mass
+        value="0.0447520708039158" />
+      <inertia
+        ixx="3.94471475609022E-06"
+        ixy="-2.44349761612521E-07"
+        ixz="-2.80517746061164E-09"
+        iyy="2.72774874783207E-05"
+        iyz="1.17490437602077E-09"
+        izz="2.73620510920675E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://scanner_3d_new/meshes/link_6.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://scanner_3d_new/meshes/link_6.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint_6"
+    type="continuous">
+    <origin
+      xyz="0 -0.0022 0.0265"
+      rpy="0 0 0" />
+    <parent
+      link="link_5" />
+    <child
+      link="link_6" />
+    <axis
+      xyz="-1 0 0" />
+    <limit
+      effort="10"
+      velocity="5" />
+  </joint>
+  <link
+    name="link_3">
+    <inertial>
+      <origin
+        xyz="-3.25290049058688E-07 -4.83630273060138E-07 0.0313140459708651"
+        rpy="0 0 0" />
+      <mass
+        value="0.165079063845708" />
+      <inertia
+        ixx="0.000466720372117271"
+        ixy="-7.29772325240798E-09"
+        ixz="-2.93962985152704E-10"
+        iyy="0.000466696902622438"
+        iyz="-4.36207232083829E-10"
+        izz="0.000931288221188339" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://scanner_3d_new/meshes/link_3.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://scanner_3d_new/meshes/link_3.STL" />
+      </geometry>
+
+      <surface>
+      <friction>
+        <ode>
+          <mu>0.8</mu>       <!-- friction coefficient 1 (0-1) -->
+          <mu2>0.8</mu2>     <!-- friction coefficient 2 (0-1) -->
+          <fdir1>1 0 0</fdir1>  <!-- optional: friction direction -->
+          <slip1>0.0</slip1>  <!-- slip parameter -->
+          <slip2>0.0</slip2>
+        </ode>
+      </friction>
+      <contact>
+        <ode>
+          <kp>1000000.0</kp>  <!-- contact stiffness -->
+          <kd>100.0</kd>      <!-- contact damping -->
+        </ode>
+      </contact>
+    </surface>
+
+    </collision>
+  </link>
+
+  <joint
+    name="joint_3"
+    type="continuous">
+    <origin
+      xyz="0 0.06 0.137"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="link_3" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      effort="10"
+      velocity="0.1" />
+  </joint>
+
+  <!-- <link
+    name="link_7">
+    <inertial>
+      <origin
+        xyz="-0.0062518 -0.0024273 -0.0043905"
+        rpy="0 0 0" />
+      <mass
+        value="0.073775" />
+      <inertia
+        ixx="2.1842E-05"
+        ixy="-8.6071E-06"
+        ixz="-9.7119E-07"
+        iyy="0.00013581"
+        iyz="-2.3904E-07"
+        izz="0.00015509" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://scanner_3d_new/meshes/link_7.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://scanner_3d_new/meshes/link_7.STL" />
+      </geometry>
+    </collision>
+  </link> -->
+  <!-- <joint
+    name="joint_7"
+    type="fixed">
+    <origin
+      xyz="0 0.00814550679950928 0.048046191990072"
+      rpy="0 0 0" />
+    <parent
+      link="link_3" />
+    <child
+      link="link_7" />
+    <axis
+      xyz="0 0 0" />
+  </joint> -->
+
+  <!-- Define RGB-D sensor 1 -->  
+  <xacro:kinetic_rgb name="rgbd_camera1" parent="link_6">
+      <origin xyz="0.0 0.0 0" rpy="3.14 3.14 1.57"/>
+      <origin xyz="0 0 0" rpy="-1.57 0 -1.57" />
+  </xacro:kinetic_rgb>
+
+  <!-- Xacro Macro to define a transmission block -->
+  <xacro:macro name="joint_transmission" params="index">
+    <transmission name="trans_${index}">
+      <type>transmission_interface/SimpleTransmission</type>
+      <joint name="joint_${index}">
+        <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      </joint>
+      <actuator name="motor_${index}">
+        <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        <mechanicalReduction>1</mechanicalReduction>
+      </actuator>
+    </transmission>
+  </xacro:macro>
+
+
+  <!-- Call the macro for each joint -->
+  <xacro:joint_transmission index="1"/>
+  <xacro:joint_transmission index="2"/>
+  <xacro:joint_transmission index="3"/>
+  <!-- <xacro:joint_transmission index="4"/> -->
+  <xacro:joint_transmission index="5"/>
+  <xacro:joint_transmission index="6"/>
+  <!-- <xacro:joint_transmission index="7"/> -->
+
+  <!-- Gazebo controller -->
+  <gazebo>
+      <plugin name="control" filename="libgazebo_ros_control.so"/>
+  </gazebo>
+
+  <!-- Gazebo joint state publisher plugin -->
+  <gazebo>
+    <plugin name="joint_state_publisher" filename="libgazebo_ros_joint_state_publisher.so">
+      <robotNamespace>/</robotNamespace>
+    </plugin>
+  </gazebo>
+
+  <!-- Gazebo visual interface for the links-->
+  <gazebo reference="base_link">
+      <material>Gazebo/Gray</material>
+  </gazebo>
+  <gazebo reference="link_1">
+      <material>Gazebo/White</material>
+  </gazebo>
+  <gazebo reference="link_2">
+      <material>Gazebo/White</material>
+  </gazebo>
+  <gazebo reference="link_3">
+      <material>Gazebo/Green</material>
+  </gazebo>
+
+  <!-- <gazebo reference="link_7">
+      <material>Gazebo/Red</material>
+  </gazebo> -->
+
+</robot>

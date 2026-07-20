@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<behavior name="kinova_turntable_reorient">
+
+	<executable package_path="flexbe_kinovagen3_flexbe_behaviors.kinova_turntable_reorient_sm" class="kinova_turntable_reorientSM" />
+	<tagstring>kinova_turntable_reorient</tagstring>
+	<author>amumu</author>
+	<date>Thu Feb 26 2026</date>
+	<description>
+		kinova_turntable_reorient
+	</description>
+
+
+	<!-- Contained Behaviors -->
+
+	<!-- Available Parameters -->
+
+</behavior>

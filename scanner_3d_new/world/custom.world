@@ -1,0 +1,793 @@
+<sdf version='1.7'>
+  <world name='default'>
+    <light name='sun' type='directional'>
+      <cast_shadows>1</cast_shadows>
+      <pose>0 0 10 0 -0 0</pose>
+      <diffuse>0.8 0.8 0.8 1</diffuse>
+      <specular>0.2 0.2 0.2 1</specular>
+      <attenuation>
+        <range>1000</range>
+        <constant>0.9</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+      <direction>-0.5 0.1 -0.9</direction>
+      <spot>
+        <inner_angle>0</inner_angle>
+        <outer_angle>0</outer_angle>
+        <falloff>0</falloff>
+      </spot>
+    </light>
+    <model name='ground_plane'>
+      <static>1</static>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+          <surface>
+            <contact>
+              <collide_bitmask>65535</collide_bitmask>
+              <ode/>
+            </contact>
+            <friction>
+              <ode>
+                <mu>100</mu>
+                <mu2>50</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='visual'>
+          <cast_shadows>0</cast_shadows>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Grey</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <gravity>0 0 -9.8</gravity>
+    <magnetic_field>6e-06 2.3e-05 -4.2e-05</magnetic_field>
+    <atmosphere type='adiabatic'/>
+    <physics type='ode'>
+      <max_step_size>0.001</max_step_size>
+      <real_time_factor>1</real_time_factor>
+      <real_time_update_rate>1000</real_time_update_rate>
+    </physics>
+    <scene>
+      <ambient>0.4 0.4 0.4 1</ambient>
+      <background>0.7 0.7 0.7 1</background>
+      <shadows>1</shadows>
+    </scene>
+    <wind/>
+    <spherical_coordinates>
+      <surface_model>EARTH_WGS84</surface_model>
+      <latitude_deg>0</latitude_deg>
+      <longitude_deg>0</longitude_deg>
+      <elevation>0</elevation>
+      <heading_deg>0</heading_deg>
+    </spherical_coordinates>
+    <model name='scanner_3d_new'>
+      <link name='dummy'>
+        <inertial>
+          <pose>0.000351 0.005724 0.041691 0 -0 0</pose>
+          <mass>0.844175</mass>
+          <inertia>
+            <ixx>0.00325337</ixx>
+            <ixy>-1.21224e-08</ixy>
+            <ixz>-3.30766e-06</ixz>
+            <iyy>0.00117607</iyy>
+            <iyz>-4.1475e-08</iyz>
+            <izz>0.00418042</izz>
+          </inertia>
+        </inertial>
+        <collision name='dummy_fixed_joint_lump__base_link_collision'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/live4jesus/ncat_kinovaGen3_catkin_ws/src/scanner_3d_new/meshes/base_link.STL</uri>
+            </mesh>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='dummy_fixed_joint_lump__base_link_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/live4jesus/ncat_kinovaGen3_catkin_ws/src/scanner_3d_new/meshes/base_link.STL</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Gray</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='joint_1' type='revolute'>
+        <pose relative_to='dummy'>0 -0.06 0.125 0 -0 0</pose>
+        <parent>dummy</parent>
+        <child>link_1</child>
+        <axis>
+          <xyz>0 0 -1</xyz>
+          <limit>
+            <effort>10</effort>
+            <velocity>5</velocity>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='link_1'>
+        <pose relative_to='joint_1'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>1e-06 -0 -0.000476 0 -0 0</pose>
+          <mass>0.114546</mass>
+          <inertia>
+            <ixx>9.99335e-05</ixx>
+            <ixy>1.86864e-11</ixy>
+            <ixz>5.22432e-10</ixz>
+            <iyy>9.99337e-05</iyy>
+            <iyz>-5.12278e-11</iyz>
+            <izz>0.00019798</izz>
+          </inertia>
+        </inertial>
+        <collision name='link_1_collision'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/live4jesus/ncat_kinovaGen3_catkin_ws/src/scanner_3d_new/meshes/link_1.STL</uri>
+            </mesh>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='link_1_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/live4jesus/ncat_kinovaGen3_catkin_ws/src/scanner_3d_new/meshes/link_1.STL</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/White</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='joint_2' type='revolute'>
+        <pose relative_to='dummy'>0 0.06 0.125 0 -0 0</pose>
+        <parent>dummy</parent>
+        <child>link_2</child>
+        <axis>
+          <xyz>0 0 1</xyz>
+          <limit>
+            <effort>10</effort>
+            <velocity>5</velocity>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='link_2'>
+        <pose relative_to='joint_2'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>-0 0.09095 0.012895 0 -0 0</pose>
+          <mass>0.179963</mass>
+          <inertia>
+            <ixx>0.00197844</ixx>
+            <ixy>5.08997e-12</ixy>
+            <ixz>2.55475e-12</ixz>
+            <iyy>0.000230755</iyy>
+            <iyz>-4.10824e-05</iyz>
+            <izz>0.00197874</izz>
+          </inertia>
+        </inertial>
+        <collision name='link_2_collision'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/live4jesus/ncat_kinovaGen3_catkin_ws/src/scanner_3d_new/meshes/link_2.STL</uri>
+            </mesh>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <collision name='link_2_fixed_joint_lump__link_4_collision_1'>
+          <pose>0 0.24185 0.0275 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/live4jesus/ncat_kinovaGen3_catkin_ws/src/scanner_3d_new/meshes/link_4.STL</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='link_2_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/live4jesus/ncat_kinovaGen3_catkin_ws/src/scanner_3d_new/meshes/link_2.STL</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/White</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <visual name='link_2_fixed_joint_lump__link_4_visual_1'>
+          <pose>0 0.24185 0.0275 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/live4jesus/ncat_kinovaGen3_catkin_ws/src/scanner_3d_new/meshes/link_4.STL</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='joint_5' type='revolute'>
+        <pose relative_to='link_2'>0 0.22875 0.09625 0 -0 0</pose>
+        <parent>link_2</parent>
+        <child>link_5</child>
+        <axis>
+          <xyz>0 0 1</xyz>
+          <limit>
+            <effort>10</effort>
+            <velocity>5</velocity>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='link_5'>
+        <pose relative_to='joint_5'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>-0 0 0.006835 0 -0 0</pose>
+          <mass>0.0111635</mass>
+          <inertia>
+            <ixx>6.15728e-08</ixx>
+            <ixy>1.47487e-41</ixy>
+            <ixz>4.0739e-24</ixz>
+            <iyy>6.15728e-08</iyy>
+            <iyz>-2.95268e-29</iyz>
+            <izz>2.60459e-08</izz>
+          </inertia>
+        </inertial>
+        <collision name='link_5_collision'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/live4jesus/ncat_kinovaGen3_catkin_ws/src/scanner_3d_new/meshes/link_5.STL</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='link_5_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/live4jesus/ncat_kinovaGen3_catkin_ws/src/scanner_3d_new/meshes/link_5.STL</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='joint_6' type='revolute'>
+        <pose relative_to='link_5'>0 -0.0022 0.0265 0 -0 0</pose>
+        <parent>link_5</parent>
+        <child>link_6</child>
+        <axis>
+          <xyz>-1 0 0</xyz>
+          <limit>
+            <effort>10</effort>
+            <velocity>5</velocity>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='link_6'>
+        <pose relative_to='joint_6'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0.000163 0.00307 -0.000872 0 -0 0</pose>
+          <mass>0.0644521</mass>
+          <inertia>
+            <ixx>5.24563e-06</ixx>
+            <ixy>-2.07171e-07</ixy>
+            <ixz>-6.06634e-09</ixz>
+            <iyy>3.16674e-05</iyy>
+            <iyz>3.04727e-07</iyz>
+            <izz>3.27606e-05</izz>
+          </inertia>
+        </inertial>
+        <collision name='link_6_collision'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/live4jesus/ncat_kinovaGen3_catkin_ws/src/scanner_3d_new/meshes/link_6.STL</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='link_6_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/live4jesus/ncat_kinovaGen3_catkin_ws/src/scanner_3d_new/meshes/link_6.STL</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <sensor name='rgbd_camera1_frame_sensor' type='depth'>
+          <always_on>1</always_on>
+          <update_rate>6</update_rate>
+          <camera>
+            <horizontal_fov>1.01229</horizontal_fov>
+            <image>
+              <format>R8G8B8</format>
+              <width>800</width>
+              <height>600</height>
+            </image>
+            <clip>
+              <near>0.05</near>
+              <far>5</far>
+            </clip>
+          </camera>
+          <plugin name='rgbd_camera1_frame_controller' filename='libgazebo_ros_openni_kinect.so'>
+            <alwaysOn>1</alwaysOn>
+            <updateRate>6.0</updateRate>
+            <cameraName>rgbd_camera1</cameraName>
+            <imageTopicName>ir/image_raw</imageTopicName>
+            <cameraInfoTopicName>ir/camera_info</cameraInfoTopicName>
+            <depthImageTopicName>depth/image_raw</depthImageTopicName>
+            <depthImageCameraInfoTopicName>depth/camera_info</depthImageCameraInfoTopicName>
+            <pointCloudTopicName>depth/points</pointCloudTopicName>
+            <frameName>rgbd_camera1_optical_frame</frameName>
+            <pointCloudCutoff>0.05</pointCloudCutoff>
+            <pointCloudCutoffMax>5</pointCloudCutoffMax>
+            <rangeMax>5</rangeMax>
+            <robotNamespace>/</robotNamespace>
+          </plugin>
+          <pose>0 0 0 -0.001593 0.001593 -1.57159</pose>
+        </sensor>
+        <sensor name='rgbd_camera1_frame_sensor' type='depth'>
+          <always_on>1</always_on>
+          <update_rate>6</update_rate>
+          <camera>
+            <horizontal_fov>1.01229</horizontal_fov>
+            <image>
+              <format>R8G8B8</format>
+              <width>800</width>
+              <height>600</height>
+            </image>
+            <clip>
+              <near>0.05</near>
+              <far>5</far>
+            </clip>
+          </camera>
+          <plugin name='rgbd_camera1_frame_controller' filename='libgazebo_ros_openni_kinect.so'>
+            <alwaysOn>1</alwaysOn>
+            <updateRate>6.0</updateRate>
+            <cameraName>rgbd_camera1</cameraName>
+            <imageTopicName>rgb/image_raw</imageTopicName>
+            <cameraInfoTopicName>rgb/camera_info</cameraInfoTopicName>
+            <pointCloudTopicName>rgb/points</pointCloudTopicName>
+            <depthImageTopicName>depth/image_raw</depthImageTopicName>
+            <depthImageCameraInfoTopicName>depth/camera_info</depthImageCameraInfoTopicName>
+            <frameName>rgbd_camera1_optical_frame</frameName>
+            <pointCloudCutoff>0.05</pointCloudCutoff>
+            <pointCloudCutoffMax>5</pointCloudCutoffMax>
+            <rangeMax>5</rangeMax>
+            <robotNamespace>/</robotNamespace>
+          </plugin>
+          <pose>0 0 0 -0.001593 0.001593 -1.57159</pose>
+        </sensor>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='joint_3' type='revolute'>
+        <pose relative_to='dummy'>0 0.06 0.137 0 -0 0</pose>
+        <parent>dummy</parent>
+        <child>link_3</child>
+        <axis>
+          <xyz>0 0 1</xyz>
+          <limit>
+            <effort>10</effort>
+            <velocity>5</velocity>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='link_3'>
+        <pose relative_to='joint_3'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>-0 -0 0.031314 0 -0 0</pose>
+          <mass>0.165079</mass>
+          <inertia>
+            <ixx>0.00046672</ixx>
+            <ixy>-7.29772e-09</ixy>
+            <ixz>-2.93963e-10</ixz>
+            <iyy>0.000466697</iyy>
+            <iyz>-4.36207e-10</iyz>
+            <izz>0.000931288</izz>
+          </inertia>
+        </inertial>
+        <collision name='link_3_collision'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/live4jesus/ncat_kinovaGen3_catkin_ws/src/scanner_3d_new/meshes/link_3.STL</uri>
+            </mesh>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='link_3_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/live4jesus/ncat_kinovaGen3_catkin_ws/src/scanner_3d_new/meshes/link_3.STL</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Green</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <plugin name='control' filename='libgazebo_ros_control.so'>
+        <robotNamespace>/</robotNamespace>
+      </plugin>
+      <plugin name='joint_state_publisher' filename='libgazebo_ros_joint_state_publisher.so'>
+        <robotNamespace>/</robotNamespace>
+      </plugin>
+      <frame name='dummy_joint' attached_to='dummy'>
+        <pose>0 0 0 0 -0 0</pose>
+      </frame>
+      <frame name='base_link' attached_to='dummy_joint'/>
+      <frame name='joint_4' attached_to='link_2'>
+        <pose>0 0.24185 0.0275 0 -0 0</pose>
+      </frame>
+      <frame name='link_4' attached_to='joint_4'/>
+      <frame name='rgbd_camera1_depth_optical_joint' attached_to='rgbd_camera1_depth_frame'>
+        <pose>0 0 0 -1.5708 -0 -1.5708</pose>
+      </frame>
+      <frame name='rgbd_camera1_depth_optical_frame' attached_to='rgbd_camera1_depth_optical_joint'/>
+      <frame name='rgbd_camera1_depth_joint' attached_to='rgbd_camera1'>
+        <pose>0 0.049 0 0 -0 0</pose>
+      </frame>
+      <frame name='rgbd_camera1_depth_frame' attached_to='rgbd_camera1_depth_joint'/>
+      <frame name='rgbd_camera1_optical_joint' attached_to='rgbd_camera1'>
+        <pose>0 0 0 -1.57 -0 -1.57</pose>
+      </frame>
+      <frame name='rgbd_camera1_optical_frame' attached_to='rgbd_camera1_optical_joint'/>
+      <frame name='rgbd_camera1_rgb_optical_joint' attached_to='rgbd_camera1_rgb_frame'>
+        <pose>0 0 0 -1.5708 -0 -1.5708</pose>
+      </frame>
+      <frame name='rgbd_camera1_rgb_optical_frame' attached_to='rgbd_camera1_rgb_optical_joint'/>
+      <frame name='rgbd_camera1_rgb_joint' attached_to='rgbd_camera1'>
+        <pose>0 0.022 0 0 -0 0</pose>
+      </frame>
+      <frame name='rgbd_camera1_rgb_frame' attached_to='rgbd_camera1_rgb_joint'/>
+      <frame name='rgbd_camera1_joint' attached_to='link_6'>
+        <pose>0 0 0 -0.001593 0.001593 -1.57159</pose>
+      </frame>
+      <frame name='rgbd_camera1' attached_to='rgbd_camera1_joint'/>
+      <pose>0 0 0 0 -0 0</pose>
+    </model>
+    <model name='piston_rod_part'>
+      <link name='link'>
+        <inertial>
+          <pose>0 0.05415 0.00355 0 -0 0</pose>
+          <mass>0.5</mass>
+          <inertia>
+            <ixx>0.00109584</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>4.23854e-05</iyy>
+            <iyz>0</iyz>
+            <izz>0.00113354</izz>
+          </inertia>
+        </inertial>
+        <collision name='collision_1'>
+          <pose>0 0 0.00375 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.059 0.052 0.0075</size>
+            </box>
+          </geometry>
+          <surface>
+            <contact>
+              <ode>
+                <max_vel>0.1</max_vel>
+                <min_depth>0.001</min_depth>
+              </ode>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <collision name='collision_2'>
+          <pose>0 0.08 0.00375 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.031 0.11 0.0075</size>
+            </box>
+          </geometry>
+          <surface>
+            <contact>
+              <ode>
+                <max_vel>0.1</max_vel>
+                <min_depth>0.001</min_depth>
+              </ode>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>model://piston_rod_part/meshes/piston_rod.dae</uri>
+              <scale>0.25 0.25 0.25</scale>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://arm_part/materials/scripts</uri>
+              <uri>model://arm_part/materials/textures</uri>
+              <name>ArmPart/Diffuse</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose>-0.759232 0.293249 0 0 -0 0</pose>
+    </model>
+    <state world_name='default'>
+      <sim_time>95 329000000</sim_time>
+      <real_time>102 340720447</real_time>
+      <wall_time>1771432439 949047735</wall_time>
+      <iterations>78056</iterations>
+      <model name='ground_plane'>
+        <pose>0 0 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>0 0 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='piston_rod_part'>
+        <pose>-0.039121 0.012816 0.173997 -9.4e-05 0.00022 -0.95243</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>-0.039121 0.012816 0.173997 -9.4e-05 0.00022 -0.95243</pose>
+          <velocity>0.004726 0.002288 -0.003037 0.127331 0.177003 0.001379</velocity>
+          <acceleration>-0.207733 -0.207738 -9.59225 1.63161 -1.52718 1.3772</acceleration>
+          <wrench>-0.103867 -0.103869 -4.79613 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='scanner_3d_new'>
+        <pose>-0.00521 0.001699 -1e-06 -5e-06 -2.3e-05 -0.027695</pose>
+        <scale>1 1 1</scale>
+        <link name='dummy'>
+          <pose>-0.00521 0.001699 -1e-06 -5e-06 -2.3e-05 -0.027695</pose>
+          <velocity>-6.9e-05 6.5e-05 0.000317 -0.002047 -0.045737 -0.00096</velocity>
+          <acceleration>-3.16537 -0.472775 0.781739 2.15525 1.4914 2.17849</acceleration>
+          <wrench>-2.67213 -0.399105 0.659925 0 -0 0</wrench>
+        </link>
+        <link name='link_1'>
+          <pose>-0.006875 -0.058277 0.125 -5e-06 -2.1e-05 -0.027698</pose>
+          <velocity>-0.00585 0.000371 0.000407 -0.002753 -0.046522 -0.00095</velocity>
+          <acceleration>-9.43009 -1.47782 -0.185336 -0.275386 0.956767 -1.11625</acceleration>
+          <wrench>-1.08018 -0.169278 -0.021229 0 -0 0</wrench>
+        </link>
+        <link name='link_2'>
+          <pose>-0.003552 0.061677 0.124999 -5e-06 -2e-05 -0.027697</pose>
+          <velocity>-0.005766 0.000338 0.00022 -0.002697 -0.04607 -0.001028</velocity>
+          <acceleration>-10.1606 -1.67644 2.83771 1.22008 -1.42127 1.9745</acceleration>
+          <wrench>-1.82854 -0.301697 0.510683 0 -0 0</wrench>
+        </link>
+        <link name='link_3'>
+          <pose>-0.003552 0.061677 0.136999 -4e-06 -2e-05 -0.027695</pose>
+          <velocity>-0.006346 0.000362 0.000258 -0.002351 -0.046724 -0.00097</velocity>
+          <acceleration>-12.5541 -2.06644 1.57026 0.182916 0.83384 -0.984703</acceleration>
+          <wrench>-2.07242 -0.341126 0.259217 0 -0 0</wrench>
+        </link>
+        <link name='link_5'>
+          <pose>0.002781 0.29034 0.221247 2.2e-05 0.000281 -0.027809</pose>
+          <velocity>-0.00882 0.000611 -0.000217 0.062281 -0.258558 -0.062244</velocity>
+          <acceleration>-16.3043 -2.77391 4.74888 -0.242893 0.605679 -0.970545</acceleration>
+          <wrench>-0.182013 -0.030967 0.053014 0 -0 0</wrench>
+        </link>
+        <link name='link_6'>
+          <pose>0.002723 0.28814 0.247747 0.000123 0.000238 -0.027789</pose>
+          <velocity>-0.001693 0.000184 -0.000263 0.074454 -0.065127 -0.003074</velocity>
+          <acceleration>-0.406161 0.276351 5.32412 1.503 1.19781 0.483157</acceleration>
+          <wrench>-0.026178 0.017811 0.34315 0 -0 0</wrench>
+        </link>
+      </model>
+      <light name='sun'>
+        <pose>0 0 10 0 -0 0</pose>
+      </light>
+    </state>
+    <gui fullscreen='0'>
+      <camera name='user_camera'>
+        <pose>0.485142 0.123703 0.369133 -0 0.275642 2.93218</pose>
+        <view_controller>orbit</view_controller>
+        <projection_type>perspective</projection_type>
+      </camera>
+    </gui>
+  </world>
+</sdf>

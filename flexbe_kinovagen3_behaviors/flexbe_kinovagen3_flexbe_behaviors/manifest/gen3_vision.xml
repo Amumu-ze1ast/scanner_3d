@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<behavior name="Gen3_vision">
+
+	<executable package_path="flexbe_kinovagen3_flexbe_behaviors.gen3_vision_sm" class="Gen3_visionSM" />
+	<tagstring></tagstring>
+	<author>amumu</author>
+	<date>Thu Jan 08 2026</date>
+	<description>
+		vision
+	</description>
+
+
+	<!-- Contained Behaviors -->
+
+	<!-- Available Parameters -->
+
+</behavior>

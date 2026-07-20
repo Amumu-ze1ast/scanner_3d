@@ -1,0 +1,47 @@
+<launch>
+
+    <!-- Load and spawn the robot -->
+    <param name="robot_description" command="$(find xacro)/xacro $(find scanner_3d_new)/urdf/scanner_3d_new.urdf"/>
+    <node name="spawn_robot" pkg="gazebo_ros" type="spawn_model" args="-param robot_description -urdf -model scanner_3d_new " />
+    
+    <!-- Gazebo parameters -->
+    <arg name="use_sim_time" default="true" />
+    <arg name="gui" default="true" />
+    <arg name="debug" default="false" />
+    <arg name="paused" default="false" />
+
+    <!-- Launch Gazebo empty world with custom world -->
+    <include file="$(find gazebo_ros)/launch/empty_world.launch" >
+        <!-- <arg name="world_name" value="$(find scanner_3d_new)/world/custom.world" /> -->
+        <arg name="gui" value="$(arg gui)" />
+        <arg name="use_sim_time" value="$(arg use_sim_time)" />
+        <arg name="debug" value="$(arg debug)" />
+        <arg name="paused" value="$(arg paused)" />
+    </include>
+
+    <!-- Load the controller -->
+    <rosparam file="$(find scanner_3d_new)/config/position_controller_short.yaml" />
+    
+    <node name="Controller_Spawner" pkg="controller_manager" type="spawner" args="  joint_state_controller 
+                                                                                    joint_1_controller
+                                                                                    joint_2_controller
+                                                                                    joint_3_controller 
+                                                                                    joint_5_controller
+                                                                                    joint_6_controller" />
+    
+    <!-- Add the controller_manager node -->
+    <node name="controller_manager" pkg="controller_manager" type="controller_manager" respawn="false" output="screen"/>
+
+    <!-- Load important nodes-->
+    <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" output="screen" />
+    <node name="Robot_State_Publisher" pkg="robot_state_publisher" type="robot_state_publisher" output="screen"/>
+    <node name="rqt_reconfigure" pkg="rqt_gui" type="rqt_gui" output="screen" />
+
+    <!-- For custom rviz config -->
+    <arg name="rviz_config" default="$(find scanner_3d_new)/rviz/custom.rviz" />
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(arg rviz_config)" required="true" />
+
+    
+
+        
+</launch>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<behavior name="gen3_concurrent_try">
+
+	<executable package_path="flexbe_kinovagen3_flexbe_behaviors.gen3_concurrent_try_sm" class="gen3_concurrent_trySM" />
+	<tagstring></tagstring>
+	<author>amumu</author>
+	<date>Thu Jan 08 2026</date>
+	<description>
+		Try running states simultinioulsy
+	</description>
+
+
+	<!-- Contained Behaviors -->
+
+	<!-- Available Parameters -->
+
+</behavior>
