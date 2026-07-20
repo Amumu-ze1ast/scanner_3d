@@ -13,31 +13,32 @@ MECC 2026
 
 ## Repository Structure
 
+```
 scanner_3d
-    flexbe_kinovagen3_behaviors
-        flexbe_kinovagen3_flexbe_behaviors  - FlexBE behavior files
-        flexbe_kinovagen3_flexbe_states     - FlexBE custom state implementations
-        LICENSE
-        README.md
-    flexbe_kinovagen3_flexbe_states
-        src                                 - Source files for custom states
-        CMakeLists.txt
-        package.xml
-        setup.py
-        LICENSE
-        README.md
-    scanner_3d_new
-        config                              - Configuration files
-        launch                              - ROS launch files
-        meshes                              - 3D mesh files
-        rviz                                - RViz configuration files
-        scripts                             - Python scripts for scanning and IK
-        sensors                             - Sensor configuration files
-        urdf                                - Robot URDF and XACRO files
-        world                               - Gazebo world files
-        CMakeLists.txt
-        export.log
-        package.xml
+├── flexbe_kinovagen3_behaviors
+│   ├── flexbe_kinovagen3_flexbe_behaviors  - FlexBE behavior files
+│   ├── flexbe_kinovagen3_flexbe_states     - FlexBE custom state implementations
+│   ├── LICENSE
+│   └── README.md
+├── flexbe_kinovagen3_flexbe_states
+│   ├── src                                 - Source files for custom states
+│   ├── CMakeLists.txt
+│   ├── package.xml
+│   ├── setup.py
+│   └── LICENSE
+└── scanner_3d_new
+    ├── config                              - Configuration files
+    ├── launch                              - ROS launch files
+    ├── meshes                              - 3D mesh files
+    ├── rviz                                - RViz configuration files
+    ├── scripts                             - Python scripts for scanning and IK
+    ├── sensors                             - Sensor configuration files
+    ├── urdf                                - Robot URDF and XACRO files
+    ├── world                               - Gazebo world files
+    ├── CMakeLists.txt
+    ├── export.log
+    └── package.xml
+```
 
 ## System Requirements
 
@@ -62,55 +63,77 @@ scanner_3d
 
 1. Create a ROS workspace if you do not have one
 
+```bash
 cd ~
 mkdir -p catkin_ws/src
 cd catkin_ws/src
+```
 
 2. Clone FlexBE repositories
 
+```bash
 git clone https://github.com/flexbe/flexbe_behavior_engine.git
 git clone https://github.com/flexbe/flexbe_app.git
+```
 
 3. Clone this repository
 
+```bash
 git clone https://github.com/Amumu-ze1ast/scanner_3d.git
+```
 
 4. Install dependencies
 
+```bash
 cd ~/catkin_ws
 rosdep install --from-paths src --ignore-src -r -y
+```
 
 5. Build the workspace
 
+```bash
 catkin_make
 source devel/setup.bash
+```
 
 6. Source the workspace on every new terminal or add to bashrc
 
+```bash
 source ~/catkin_ws/devel/setup.bash
+```
 
 To permanently add to bashrc:
 
+```bash
 echo "source ~/catkin_ws/devel/setup.bash" >> ~/.bashrc
 source ~/.bashrc
+```
 
 ## Usage
 
 1. Launch the Gazebo simulation
 
+```bash
 roslaunch scanner_3d_new simulation.launch
+```
 
 2. Launch RTAB-Map for robotic subsystem
 
+```bash
 roslaunch rtabmap_ros rtabmap.launch rgb_topic:/robot1_kinova/camera/color/image_raw
+```
 
 3. Launch RTAB-Map for turntable subsystem
 
+```bash
 roslaunch rtabmap_ros rtabmap.launch rgb_topic:/robot2_turntable/camera/color/image_raw
+```
 
 4. Launch FlexBE
 
+```bash
 roslaunch flexbe_app flexbe_full.launch
+```
 
 5. Run the scanning behavior through FlexBE dashboard
 
@@ -126,16 +149,17 @@ roslaunch flexbe_app flexbe_full.launch
 
 ## Results
 
-Method                  Coverage    Scan Time
-Robot Only              70%         10s
-Turntable Only          65%         15s
-Hybrid with manipulation  95%       25s
+| Method | Coverage | Scan Time |
+|--------|----------|-----------|
+| Robot Only | 70% | 10s |
+| Turntable Only | 65% | 15s |
+| Hybrid with manipulation | 95% | 25s |
 
 ## Contact
 
 Amanuel Abrdo Tereda
 aatereda@aggies.ncat.edu
-Portfolio: https://amumu-portfolio.vercel.app
+Portfolio: [amumu-portfolio.vercel.app](https://amumu-portfolio.vercel.app)
 North Carolina A&T State University
 
 ## License
